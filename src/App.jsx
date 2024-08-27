@@ -4,6 +4,12 @@ import Login from './Login';
 import Profile from './Profile';
 import Register from './Register'
 
+import "./Assets/scss/hope-ui.scss"
+import "./Assets/scss/custom.scss"
+import "./Assets/scss/dark.scss"
+import "./Assets/scss/rtl.scss"
+import "./Assets/scss/customizer.scss"
+
 function App() {
   return (
     <Router>
