@@ -6,16 +6,22 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios.get('http://localhost:8080/profile', { withCredentials: true })
-      .then((response) => {
-        setUser(response.data.user);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.response ? err.response.data.message : 'Failed to fetch profile');
-        setLoading(false);
+  // Function to fetch profile data
+  const fetchProfile = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/profile', {
+        withCredentials: true,
       });
+      setUser(response.data.user);
+    } catch (err) {
+      setError(err.response ? err.response.data.message : 'Failed to fetch profile');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
   }, []);
 
   if (loading) return <div>Loading...</div>;
