@@ -1,10 +1,14 @@
 import { createRoot } from 'react-dom/client';
-import Register from './Register';
-import Login from './Login';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-// Clear the existing HTML content
-document.body.innerHTML = '<div id="app"></div>';
+document.body.innerHTML = '<div id="root"></div>';
 
-// Render your React component instead
-const root = createRoot(document.getElementById('app'));
-root.render(<Login/>);
+// Rendering root
+const root = createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
