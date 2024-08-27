@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Profile = () => {
+function Dashboard() {
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Function to fetch profile data
   const fetchProfile = async () => {
@@ -14,7 +16,7 @@ const Profile = () => {
       });
       setUser(response.data.user);
     } catch (err) {
-      setError(err.response ? err.response.data.message : 'Failed to fetch profile');
+      console.log(err.response ? err.response.data.message : 'Failed to fetch profile');
     } finally {
       setLoading(false);
     }
@@ -25,19 +27,21 @@ const Profile = () => {
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
-      <h1>Profile Page</h1>
-      {user && (
-        <div>
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
-        </div>
+    <h1>Dashboard</h1>
+    <div>
+      {user ? (
+        // If user is not null, go to profile section
+        <button onClick={() => navigate('/profile')}>Profile</button>
+      ) : (
+        // If user is null, go to login
+        <button onClick={() => navigate('/login')}>Login</button>
       )}
     </div>
-  );
-};
+  </div>
+  )
+}
 
-export default Profile;
+export default Dashboard
