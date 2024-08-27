@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   // Define state for form inputs
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -20,6 +22,7 @@ const Login = () => {
           'Content-Type': 'application/json', // Specify the content type
         },
         body: JSON.stringify(formData), // Convert form data to JSON string
+        credentials: 'include' 
       });
 
       if (response.ok) {
@@ -28,6 +31,7 @@ const Login = () => {
         // Reset form inputs
         setUsername('');
         setPassword('');
+        navigate('/profile');
       } else {
         // Handle error response
         console.error('Error logging in:', response.statusText);
