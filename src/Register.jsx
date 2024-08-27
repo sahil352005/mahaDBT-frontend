@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { Link,  useNavigate } from 'react-router-dom';
+import { Row, Col, Image, Form, Button, ListGroup, } from 'react-bootstrap'
+import Card from './Assets/Card';
+import auth1 from './Assets/01.png'
 
 const Register = () => {
   // Define state for form inputs
@@ -41,116 +45,73 @@ const Register = () => {
 
   return (
     <>
-      <div className="h-screen flex justify-center items-center">
-        <ul className="hidden text-sm rounded-lg font-medium text-center text-gray-500 shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
-          <div className="h-84 w-100 flex justify-center rounded-lg ">
-            <ul className="nav nav-tabs flex flex-row space-x-4 my-5">
-              <li className="nav-item">
-                <a href="" className="flex justify-center items-center w-96 mx-auto inline-block p-4 text-gray-900 bg-red-400 border border-gray-200 dark:border-gray-700 rounded-s-lg rounded-e-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-300 dark:text-white" aria-current="page">Register</a>
-                <form className="text-center px-3 py-10 my-5 ml-[.5rem]" onSubmit={handleSubmit} //Attach form submission handler
-                >
-                  <div className='flex space-x-4'>
-                    <div className="inputbox">
-                      <label>Username : </label>
-                      <input
-                        className="rounded-lg"
-                        type="text"
-                        name="username"
-                        required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)} // Update state on input change
-                      />
-                      <p className="msg"></p>
-                    </div>
-
-                    <div className="inputbox">
-                      <label>Email-id : </label>
-                      <input
-                        className="rounded-lg"
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} // Update state on input change
-                      />
-                      <p className="msg"></p>
-                    </div>
-                  </div>
-
-                  <div className="inputbox my-4">
-                    <label>Password : </label>
-                    <input
-                      className="rounded-lg"
-                      type="password"
-                      name="password"
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)} // Update state on input change
-                    />
-                    <p className="msg"></p>
-                  </div>
-
-                  <div className="border border-2 border-gray-500 rounded-lg mx-auto w-40 h-10 flex justify-center items-center">
-                    <input type="submit" value="Sign up" className="submit" />
-                  </div>
-
-                  <p className="sign my-2">
-                    Already have an account?  <a href="/login"><u>Login</u></a>.
-                  </p>
-                </form>
-              </li>
-            </ul>
+      <section className="login-content">
+        <Row className="m-0 align-items-center bg-white vh-100">
+          <div className="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
+            <Image src={auth1} className="Image-fluid gradient-main animated-scaleX" alt="images" />
           </div>
-        </ul>
-      </div>
+          <Col md="6">
+            <Row className="justify-content-center">
+              <Col md="10">
+                <Card className="card-transparent auth-card shadow-none d-flex justify-content-center mb-0">
+                  <Card.Body>
+                    {/* <Link to="/dashboard" className="navbar-brand d-flex align-items-center mb-3">
+                      <svg width="30" className="text-primary" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor" />
+                        <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor" />
+                        <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor" />
+                        <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor" />
+                      </svg>
+                      <h4 className="logo-title ms-3">Hope UI</h4>
+                    </Link> */}
+                    <h2 className="mb-2 text-center">Sign Up</h2>
+                    <p className="text-center">Create your Hope UI account.</p>
+                    <Form onSubmit={handleSubmit}>
+                      <Row>
+                        <Col lg="6">
+                          <Form.Group className="form-group">
+                            <Form.Label htmlFor="username" className="">Username</Form.Label>
+                            <Form.Control type="text" className="" id="username" placeholder=" " onChange={(e) => {setUsername(e.target.value)}}/>
+                          </Form.Group>
+                        </Col>
+                        <Col lg="6">
+                          <Form.Group className="form-group">
+                            <Form.Label htmlFor="email" className="">Email</Form.Label>
+                            <Form.Control type="email" className="" id="email" placeholder=" " onChange={(e) => {setEmail(e.target.value)}}/>
+                          </Form.Group>
+                        </Col>
+                        <Col lg="6">
+                          <Form.Group className="form-group">
+                            <Form.Label htmlFor="password" className="">Password</Form.Label>
+                            <Form.Control type="password" className="" id="password" placeholder=" " onChange={(e) => {setPassword(e.target.value)}}/>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                      <div className="d-flex justify-content-center">
+                        <Button type="submit" variant="primary">Sign Up</Button>
+                      </div>
+                      <p className="mt-3 text-center">
+                        Already have an Account <Link to="/" className="text-underline">Sign In</Link>
+                      </p>
+                    </Form>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+            <div className="sign-bg sign-bg-right">
+              <svg width="280" height="230" viewBox="0 0 421 359" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.05">
+                  <rect x="-15.0845" y="154.773" width="543" height="77.5714" rx="38.7857" transform="rotate(-45 -15.0845 154.773)" fill="#3A57E8" />
+                  <rect x="149.47" y="319.328" width="543" height="77.5714" rx="38.7857" transform="rotate(-45 149.47 319.328)" fill="#3A57E8" />
+                  <rect x="203.936" y="99.543" width="310.286" height="77.5714" rx="38.7857" transform="rotate(45 203.936 99.543)" fill="#3A57E8" />
+                  <rect x="204.316" y="-229.172" width="543" height="77.5714" rx="38.7857" transform="rotate(45 204.316 -229.172)" fill="#3A57E8" />
+                </g>
+              </svg>
+            </div>
+          </Col>
+        </Row>
+      </section>
     </>
-    // <div className="w-screen flex justify-center">
-    //   <form
-    //     className="text-center px-3 py-10 ml-[.5rem]"
-    //     onSubmit={handleSubmit} // Attach form submission handler
-    //   >
-    //     <h3 className="font-bold">Register</h3>
-
-    //     <div className="inputbox">
-    //       <label>Username</label>
-    //       <input
-    //         type="text"
-    //         className="email"
-    //         name="username"
-    //         required
-    //         value={username}
-    //         onChange={(e) => setUsername(e.target.value)} // Update state on input change
-    //       />
-    //       <p className="msg"></p>
-    //     </div>
-
-    //     <div className="inputbox">
-    //       <label>Email-id</label>
-    //       <input
-    //         type="email"
-    //         name="email"
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)} // Update state on input change
-    //       />
-    //       <p className="msg"></p>
-    //     </div>
-
-    //     <div className="inputbox">
-    //       <label>Password</label>
-    //       <input
-    //         type="password"
-    //         className="password"
-    //         name="password"
-    //         required
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)} // Update state on input change
-    //       />
-    //       <p className="msg"></p>
-    //     </div>
-
-    //     <input type="submit" value="sign up" className="submit" />
-
-    //   </form>
-    // </div>
   )
 };
 
