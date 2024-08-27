@@ -31,7 +31,7 @@ const Login = () => {
         // Reset form inputs
         setUsername('');
         setPassword('');
-        navigate('/profile');
+        navigate('/');
       } else {
         // Handle error response
         console.error('Error logging in:', response.statusText);
