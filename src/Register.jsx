@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link,  useNavigate } from 'react-router-dom';
 import { Row, Col, Image, Form, Button, ListGroup, } from 'react-bootstrap'
 import Card from './Assets/Card';
-import auth1 from './Assets/01.png'
+import auth1 from './Assets/registerpage.jpg'
 
 const Register = () => {
   // Define state for form inputs
@@ -47,8 +47,8 @@ const Register = () => {
     <>
       <section className="login-content">
         <Row className="m-0 align-items-center bg-white vh-100">
-          <div className="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
-            <Image src={auth1} className="Image-fluid gradient-main animated-scaleX" alt="images" />
+          <div className="col-md-6 d-md-block d-none bg-white p-0 mt-n1 vh-100 overflow-hidden">
+            <Image src={auth1} className="Image-fluid gradient-main animated-scaleX blur-sm" alt="images" />
           </div>
           <Col md="6">
             <Row className="justify-content-center">
@@ -91,7 +91,7 @@ const Register = () => {
                         <Button type="submit" variant="primary">Sign Up</Button>
                       </div>
                       <p className="mt-3 text-center">
-                        Already have an Account <Link to="/" className="text-underline">Sign In</Link>
+                        Already have an Account <Link to="/login" className="text-underline">Sign In</Link>
                       </p>
                     </Form>
                   </Card.Body>
